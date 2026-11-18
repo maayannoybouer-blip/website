@@ -945,17 +945,8 @@
             }
             .hero-top-row {
                 flex-direction: column-reverse;
-                align-items: center;
                 gap: 15px;
                 text-align: center;
-            }
-            .hero-logo-container {
-                justify-content: center;
-                width: 100%;
-            }
-            .hero-logo-img {
-                margin: 0 auto;
-                height: 48px;
             }
             #lightbox-images-container {
                 grid-template-columns: 1fr !important;
@@ -1098,12 +1089,6 @@
             .footer-mobile-wrapper {
                 display: flex !important;
             }
-            .footer-mobile-top-row {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-end;
-                width: 100%;
-            }
             .footer-mobile-name {
                 text-align: right;
                 color: var(--white);
@@ -1123,14 +1108,8 @@
                 font-size: 0.95rem;
             }
             .footer-mobile-logo {
-                text-align: left;
-                display: flex;
-                align-items: center;
-                justify-content: flex-end;
-            }
-            .footer-mobile-logo .footer-logo-img {
-                height: 30px;
-                display: block;
+                text-align: center;
+                margin-top: 5px;
             }
         }
     </style>
@@ -1443,15 +1422,13 @@
     <footer>
         <div class="footer-content">
             <div class="footer-mobile-wrapper">
-                <div class="footer-mobile-top-row">
-                    <div class="footer-mobile-name">מעין נויבאואר</div>
-                    <div class="footer-mobile-logo">
-                        <img src="images/Logo.png" alt="" class="footer-logo-img" onerror="this.style.display='none';">
-                    </div>
-                </div>
+                <div class="footer-mobile-name">מעין נויבאואר</div>
                 <div class="footer-mobile-row">
                     <a href="tel:0509325563" class="footer-phone-link">050-9325563</a>
                     <a href="mailto:maayan.noybouer@gmail.com" class="footer-email-link">maayan.noybouer@gmail.com</a>
+                </div>
+                <div class="footer-mobile-logo">
+                    <img src="images/Logo.png" alt="" class="footer-logo-img" onerror="this.style.display='none';">
                 </div>
             </div>
             <div class="footer-details desktop-footer-details">
