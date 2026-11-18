@@ -868,9 +868,12 @@
             max-width: 1300px;
         }
 
+        /* הגדרת גריד עם גובה שורה קבוע (Fixed Height) ליישור מושלם בין תמונות אורך ורוחב */
         #lightbox-images-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 420px;
+            grid-auto-flow: dense;
             gap: 14px;
             width: 100%;
             max-width: 1450px;
@@ -883,18 +886,21 @@
             overflow: hidden;
             background-color: #F9FAFB;
             width: 100%;
+            height: 100%;
             position: relative;
             cursor: pointer;
         }
 
+        /* תמונת רוחב תופסת 2 עמודות ושורה 1 (גובה קבוע 290px) */
         .lightbox-img-wrapper.landscape {
             grid-column: span 2;
-            aspect-ratio: 16 / 10;
+            grid-row: span 1;
         }
 
+        /* תמונת אורך תופסת עמודה 1 ושורה 1 (גובה קבוע 290px בדיוק כמו הרוחב) */
         .lightbox-img-wrapper.portrait {
             grid-column: span 1;
-            aspect-ratio: 3 / 4;
+            grid-row: span 1;
         }
 
         .lightbox-img-wrapper img {
@@ -911,10 +917,13 @@
             .about-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
-                padding: 20px 15px;
+                padding: 10px 15px;
             }
             .about-image-wrapper {
-                margin: 0 auto 15px auto;
+                margin: 24px auto 10px auto;
+            }
+            .about-content p {
+                margin-bottom: 5px;
             }
             .mobile-menu-toggle {
                 display: block;
@@ -941,10 +950,12 @@
             }
             #lightbox-images-container {
                 grid-template-columns: 1fr !important;
+                grid-auto-rows: auto !important;
                 padding: 0 15px 40px 15px;
             }
             .lightbox-img-wrapper {
                 grid-column: span 1 !important;
+                grid-row: span 1 !important;
                 aspect-ratio: 4 / 5;
             }
         }
@@ -1170,7 +1181,7 @@
 
             <div class="projects-grid" id="projects-grid-container">
                 <div class="project-card" data-category="private">
-                    <div class="project-img-wrapper" onclick="openDynamicGallery('shoresh', 20)">
+                    <div class="project-img-wrapper" onclick="openGallery('shoresh')">
                         <img src="images/shoresh1.jpg" alt="" class="project-img" data-prefix="shoresh" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
@@ -1182,7 +1193,7 @@
                     </div>
                 </div>
                 <div class="project-card" data-category="private">
-                    <div class="project-img-wrapper" onclick="openDynamicGallery('gonda', 20)">
+                    <div class="project-img-wrapper" onclick="openGallery('gonda')">
                         <img src="images/gonda1.jpg" alt="" class="project-img" data-prefix="gonda" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
@@ -1194,7 +1205,7 @@
                     </div>
                 </div>
                 <div class="project-card" data-category="private">
-                    <div class="project-img-wrapper" onclick="openDynamicGallery('ziv', 20)">
+                    <div class="project-img-wrapper" onclick="openGallery('ziv')">
                         <img src="images/ziv1.jpg" alt="" class="project-img" data-prefix="ziv" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
@@ -1207,7 +1218,7 @@
                 </div>
 
                 <div class="project-card" data-category="studio">
-                    <div class="project-img-wrapper" onclick="openDynamicGallery('gefen', 20)">
+                    <div class="project-img-wrapper" onclick="openGallery('gefen')">
                         <img src="images/gefen1.jpg" alt="" class="project-img" data-prefix="gefen" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
@@ -1219,7 +1230,7 @@
                     </div>
                 </div>
                 <div class="project-card" data-category="studio">
-                    <div class="project-img-wrapper" onclick="openDynamicGallery('melodic', 20)">
+                    <div class="project-img-wrapper" onclick="openGallery('melodic')">
                         <img src="images/melodic1.jpg" alt="" class="project-img" data-prefix="melodic" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
@@ -1231,7 +1242,7 @@
                     </div>
                 </div>
                 <div class="project-card" data-category="studio">
-                    <div class="project-img-wrapper" onclick="openDynamicGallery('beeri', 20)">
+                    <div class="project-img-wrapper" onclick="openGallery('beeri')">
                         <img src="images/beeri1.jpg" alt="" class="project-img" data-prefix="beeri" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
@@ -1243,7 +1254,7 @@
                     </div>
                 </div>
                 <div class="project-card" data-category="studio">
-                    <div class="project-img-wrapper" onclick="openDynamicGallery('ela', 20)">
+                    <div class="project-img-wrapper" onclick="openGallery('ela')">
                         <img src="images/ela1.jpg" alt="" class="project-img" data-prefix="ela" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
@@ -1255,7 +1266,7 @@
                     </div>
                 </div>
                 <div class="project-card" data-category="studio">
-                    <div class="project-img-wrapper" onclick="openDynamicGallery('kerem', 20)">
+                    <div class="project-img-wrapper" onclick="openGallery('kerem')">
                         <img src="images/kerem1.jpg" alt="" class="project-img" data-prefix="kerem" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
@@ -1267,7 +1278,7 @@
                     </div>
                 </div>
                 <div class="project-card" data-category="studio">
-                    <div class="project-img-wrapper" onclick="openDynamicGallery('lotem', 20)">
+                    <div class="project-img-wrapper" onclick="openGallery('lotem')">
                         <img src="images/lotem1.jpg" alt="" class="project-img" data-prefix="lotem" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
@@ -1280,7 +1291,7 @@
                 </div>
 
                 <div class="project-card" data-category="apartments">
-                    <div class="project-img-wrapper" onclick="openDynamicGallery('ramon', 20)">
+                    <div class="project-img-wrapper" onclick="openGallery('ramon')">
                         <img src="images/ramon1.jpg" alt="" class="project-img" data-prefix="ramon" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
@@ -1292,7 +1303,7 @@
                     </div>
                 </div>
                 <div class="project-card" data-category="apartments">
-                    <div class="project-img-wrapper" onclick="openDynamicGallery('harel', 20)">
+                    <div class="project-img-wrapper" onclick="openGallery('harel')">
                         <img src="images/harel1.jpg" alt="" class="project-img" data-prefix="harel" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
@@ -1304,7 +1315,7 @@
                     </div>
                 </div>
                 <div class="project-card" data-category="apartments">
-                    <div class="project-img-wrapper" onclick="openDynamicGallery('sharir_friedman', 20)">
+                    <div class="project-img-wrapper" onclick="openGallery('sharir_friedman')">
                         <img src="images/sharir_friedman1.jpg" alt="" class="project-img" data-prefix="sharir_friedman" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
@@ -1332,7 +1343,8 @@
                     <p>אני מעצבת בתים ומרחבים שנולדים מתוך הסיפור שלכם ושייכות למקום.
 הם מיועדים לחיים האמיתיים, מחברים בין אנשים ומייצרים תחושת שייכות.
 
-חומר שמתיישב טוב, אור במקום הנכון, פינה שנוח לשבת בה.
+חומר שמתיישב טוב, אור במקום הנכון,
+פינה שנוח לשבת בה.
 הפרטים האלה מספרים מי אתם, בלי שצריך להסביר.</p>
                     <div class="signature-container">
                         <img src="images/signature.jpg" alt="" class="signature-img" onerror="this.onerror=null; this.src='images/signature.png'; this.onerror=function(){this.style.display='none';};">
@@ -1513,35 +1525,33 @@
         }
 
         function initHomeCarousel() {
-            let found = [], checked = 0;
-            for (let i = 1; i <= 10; i++) {
-                ['jpg', 'png'].forEach(ext => {
-                    let p = `images/home${i}.${ext}`;
-                    let img = new Image();
-                    img.onload = () => { found.push(p); found.sort(); checkDone(); };
-                    img.onerror = () => checkDone();
-                    img.src = p;
-                });
-            }
-            function checkDone() {
-                checked++;
-                if (checked >= 20 && found.length > 0) {
-                    const c = document.getElementById('dynamic-carousel-container'), d = document.getElementById('dynamic-carousel-dots');
-                    found.forEach((src, idx) => {
-                        let s = document.createElement('div');
-                        s.className = 'carousel-slide' + (idx === 0 ? ' active' : '');
-                        let i = document.createElement('img'); i.src = src; i.alt = '';
-                        i.onerror = function() { s.style.display = 'none'; };
-                        s.appendChild(i); c.appendChild(s);
-                        let dot = document.createElement('span');
-                        dot.className = 'dot' + (idx === 0 ? ' active' : '');
-                        dot.onclick = () => currentSlide(idx);
-                        d.appendChild(dot);
-                    });
+            const container = document.getElementById('dynamic-carousel-container');
+            const dotsContainer = document.getElementById('dynamic-carousel-dots');
+            
+            for (let i = 1; i <= 6; i++) {
+                let src = `images/home${i}.jpg`;
+                let s = document.createElement('div');
+                s.className = 'carousel-slide' + (i === 1 ? ' active' : '');
+                let img = document.createElement('img');
+                img.src = src;
+                img.alt = '';
+                img.onerror = function() {
+                    if (this.src.endsWith('.jpg')) {
+                        this.src = `images/home${i}.png`;
+                    } else {
+                        s.style.display = 'none';
+                    }
+                };
+                s.appendChild(img);
+                container.appendChild(s);
 
-                    if (found.length > 1) setInterval(nextSlide, 4500);
-                }
+                let dot = document.createElement('span');
+                dot.className = 'dot' + (i === 1 ? ' active' : '');
+                dot.onclick = () => currentSlide(i - 1);
+                dotsContainer.appendChild(dot);
             }
+
+            setInterval(nextSlide, 4500);
         }
 
         let slideIndex = 0;
@@ -1558,7 +1568,21 @@
         function nextSlide() { showSlide(slideIndex + 1); }
         function prevSlide() { showSlide(slideIndex - 1); }
 
-        const discoveredCache = {};
+        const projectImageCounts = {
+            'shoresh': 14,
+            'gonda': 16,
+            'ziv': 13,
+            'gefen': 9,
+            'melodic': 12,
+            'beeri': 8,
+            'ela': 12,
+            'kerem': 14,
+            'lotem': 10,
+            'ramon': 11,
+            'harel': 6,
+            'sharir_friedman': 10
+        };
+
         const projectSubtitles = {
             'shoresh': 'בית פרטי בשער העמקים',
             'gonda': 'בית פרטי בשער העמקים',
@@ -1589,7 +1613,9 @@
             'sharir_friedman': 'תכנון מחדש של דירה ישנה, שתרגם את החזון של הלקוחות למרחב הרמוני המאזן בין יחד לבין ביטוי אישי. מקום המאפשר לכל אחת מבנות הבית את הפינה שלה, לצד חוויה משותפת של חיים יחד. תהליך שנרקם מתוך שותפות רגישה ואמון הדדי, ונושא את טביעת היד הכנה, הססגונית והייחודית של בנות הבית.',
         };
 
-        function openDynamicGallery(prefix, maxCount = 20) {
+        const discoveredCache = {};
+
+        function openGallery(prefix) {
             let card = document.querySelector(`.project-img[data-prefix="${prefix}"]`)?.closest('.project-card');
             let title = card ? card.querySelector('h3')?.innerText : '';
             let cardDesc = card ? card.querySelector('p')?.innerText : '';
@@ -1600,26 +1626,15 @@
                 showLightboxModal(discoveredCache[prefix], title, subtitle, desc);
                 return;
             }
-            let loadedMap = {}, checked = 0, total = maxCount * 4;
-            for (let i = 1; i <= maxCount; i++) {
-                ['jpg', 'png', 'JPG', 'PNG'].forEach(ext => {
-                    let p = `images/${prefix}${i}.${ext}`;
-                    let img = new Image();
-                    img.onload = () => { loadedMap[i] = p; checkDone(); };
-                    img.onerror = () => checkDone();
-                    img.src = p;
-                });
+
+            let count = projectImageCounts[prefix] || 10;
+            let paths = [];
+            for (let i = 1; i <= count; i++) {
+                paths.push(`images/${prefix}${i}.jpg`);
             }
-            function checkDone() {
-                checked++;
-                if (checked >= total) {
-                    let paths = [];
-                    for (let i = 1; i <= maxCount; i++) { if (loadedMap[i]) paths.push(loadedMap[i]); }
-                    if (!paths.length) paths = [`images/${prefix}1.jpg`];
-                    discoveredCache[prefix] = paths;
-                    showLightboxModal(paths, title, subtitle, desc);
-                }
-            }
+
+            discoveredCache[prefix] = paths;
+            showLightboxModal(paths, title, subtitle, desc);
         }
 
         function showLightboxModal(imagesArray, title, subtitle, desc) {
@@ -1671,7 +1686,11 @@
                     }
                 };
                 img.onerror = function() {
-                    w.style.display = 'none';
+                    if (this.src.endsWith('.jpg')) {
+                        this.src = this.src.replace('.jpg', '.png');
+                    } else {
+                        w.style.display = 'none';
+                    }
                 };
                 w.onclick = () => openSingleLightbox(imagesArray, idx);
                 w.appendChild(img);
