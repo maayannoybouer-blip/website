@@ -124,7 +124,6 @@
             transform: translateY(0);
         }
 
-        /* Immediate visibility fix for mobile devices */
         @media(max-width: 900px) {
             section {
                 opacity: 1 !important;
@@ -410,7 +409,7 @@
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px; /* Reduced gap slightly for compact and neat look */
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -1453,7 +1452,7 @@
                 <svg width="20" height="36" viewBox="0 0 20 36" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2L18 18L2 34"/></svg>
             </button>
             <div class="single-img-container">
-                <img id="single-lightbox-img" src="" alt="" onerror="this.style.display='none'; this.alt='';">
+                <img id="single-lightbox-img" src="" alt="" style="display: block;" onerror="this.style.display='none';">
             </div>
             <button class="carousel-arrow next" onclick="nextSingleImage()" title="תמונה הבאה">
                 <svg width="20" height="36" viewBox="0 0 20 36" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2L2 18L18 34"/></svg>
@@ -1687,7 +1686,9 @@
         function openSingleLightbox(imagesArray, index) {
             currentSingleImages = imagesArray;
             currentSingleIndex = index;
-            document.getElementById('single-lightbox-img').src = currentSingleImages[currentSingleIndex];
+            const singleImg = document.getElementById('single-lightbox-img');
+            singleImg.style.display = 'block';
+            singleImg.src = currentSingleImages[currentSingleIndex];
             document.getElementById('lightbox-single-overlay').style.display = 'flex';
         }
 
@@ -1698,7 +1699,9 @@
         function showSingleImage(n) {
             if (!currentSingleImages.length) return;
             currentSingleIndex = (n + currentSingleImages.length) % currentSingleImages.length;
-            document.getElementById('single-lightbox-img').src = currentSingleImages[currentSingleIndex];
+            const singleImg = document.getElementById('single-lightbox-img');
+            singleImg.style.display = 'block';
+            singleImg.src = currentSingleImages[currentSingleIndex];
         }
 
         function nextSingleImage() {
