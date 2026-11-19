@@ -193,7 +193,7 @@
             transform: translateY(-50%);
             background: none;
             border: none;
-            color: #94A3B8;
+            color: #4B5563;
             cursor: pointer;
             z-index: 10;
             transition: color 0.2s ease;
@@ -206,12 +206,12 @@
         .carousel-arrow svg {
             width: 16px;
             height: 32px;
-            stroke-width: 0.8px;
+            stroke-width: 1.1px;
             transition: stroke 0.2s ease;
         }
 
-        .carousel-arrow:active {
-            color: #475569;
+        .carousel-arrow:hover, .carousel-arrow:active {
+            color: #000000;
         }
 
         .carousel-arrow.prev {
@@ -945,17 +945,33 @@
             }
             .hero-top-row {
                 flex-direction: column-reverse;
-                align-items: center;
-                gap: 15px;
-                text-align: center;
+                align-items: flex-end;
+                gap: 10px;
+                text-align: left;
+                padding: 0 12px;
             }
             .hero-logo-container {
-                justify-content: center;
+                justify-content: flex-end;
                 width: 100%;
             }
             .hero-logo-img {
-                margin: 0 auto;
-                height: 48px;
+                margin: 0;
+                height: 42px;
+            }
+            .hero-tagline {
+                text-align: left;
+                width: 100%;
+                font-size: 1.15rem;
+                top: 0;
+            }
+            .hero-cta-container {
+                text-align: right;
+                margin-top: 28px;
+                padding: 0 12px;
+            }
+            .hero-cta-container .btn-solid {
+                padding: 8px 22px;
+                font-size: 0.9rem;
             }
             #lightbox-images-container {
                 grid-template-columns: 1fr !important;
@@ -1026,7 +1042,7 @@
             transform: translateY(-50%);
             background: none;
             border: none;
-            color: #94A3B8;
+            color: #4B5563;
             cursor: pointer;
             z-index: 10;
             transition: color 0.2s ease;
@@ -1039,12 +1055,12 @@
         #lightbox-single-overlay .carousel-arrow svg {
             width: 16px;
             height: 32px;
-            stroke-width: 0.8px;
+            stroke-width: 1.1px;
             transition: stroke 0.2s ease;
         }
 
-        #lightbox-single-overlay .carousel-arrow:active {
-            color: #475569;
+        #lightbox-single-overlay .carousel-arrow:hover, #lightbox-single-overlay .carousel-arrow:active {
+            color: #000000;
         }
 
         #lightbox-single-overlay .carousel-arrow.prev {
@@ -1207,7 +1223,7 @@
             <div class="projects-grid" id="projects-grid-container">
                 <div class="project-card" data-category="private">
                     <div class="project-img-wrapper" onclick="openGallery('shoresh')">
-                        <img src="images/shoresh1.jpg" alt="" class="project-img" data-prefix="shoresh" onerror="this.style.display='none'; this.alt='';">
+                        <img src="images/shoresh1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="shoresh" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
                         <div class="project-info-top">
@@ -1219,7 +1235,7 @@
                 </div>
                 <div class="project-card" data-category="private">
                     <div class="project-img-wrapper" onclick="openGallery('gonda')">
-                        <img src="images/gonda1.jpg" alt="" class="project-img" data-prefix="gonda" onerror="this.style.display='none'; this.alt='';">
+                        <img src="images/gonda1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="gonda" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
                         <div class="project-info-top">
@@ -1231,7 +1247,7 @@
                 </div>
                 <div class="project-card" data-category="private">
                     <div class="project-img-wrapper" onclick="openGallery('ziv')">
-                        <img src="images/ziv1.jpg" alt="" class="project-img" data-prefix="ziv" onerror="this.style.display='none'; this.alt='';">
+                        <img src="images/ziv1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="ziv" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
                         <div class="project-info-top">
@@ -1244,7 +1260,7 @@
 
                 <div class="project-card" data-category="studio">
                     <div class="project-img-wrapper" onclick="openGallery('gefen')">
-                        <img src="images/gefen1.jpg" alt="" class="project-img" data-prefix="gefen" onerror="this.style.display='none'; this.alt='';">
+                        <img src="images/gefen1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="gefen" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
                         <div class="project-info-top">
@@ -1256,7 +1272,7 @@
                 </div>
                 <div class="project-card" data-category="studio">
                     <div class="project-img-wrapper" onclick="openGallery('melodic')">
-                        <img src="images/melodic1.jpg" alt="" class="project-img" data-prefix="melodic" onerror="this.style.display='none'; this.alt='';">
+                        <img src="images/melodic1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="melodic" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
                         <div class="project-info-top">
@@ -1268,7 +1284,7 @@
                 </div>
                 <div class="project-card" data-category="studio">
                     <div class="project-img-wrapper" onclick="openGallery('beeri')">
-                        <img src="images/beeri1.jpg" alt="" class="project-img" data-prefix="beeri" onerror="this.style.display='none'; this.alt='';">
+                        <img src="images/beeri1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="beeri" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
                         <div class="project-info-top">
@@ -1280,7 +1296,7 @@
                 </div>
                 <div class="project-card" data-category="studio">
                     <div class="project-img-wrapper" onclick="openGallery('ela')">
-                        <img src="images/ela1.jpg" alt="" class="project-img" data-prefix="ela" onerror="this.style.display='none'; this.alt='';">
+                        <img src="images/ela1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="ela" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
                         <div class="project-info-top">
@@ -1292,7 +1308,7 @@
                 </div>
                 <div class="project-card" data-category="studio">
                     <div class="project-img-wrapper" onclick="openGallery('kerem')">
-                        <img src="images/kerem1.jpg" alt="" class="project-img" data-prefix="kerem" onerror="this.style.display='none'; this.alt='';">
+                        <img src="images/kerem1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="kerem" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
                         <div class="project-info-top">
@@ -1304,7 +1320,7 @@
                 </div>
                 <div class="project-card" data-category="studio">
                     <div class="project-img-wrapper" onclick="openGallery('lotem')">
-                        <img src="images/lotem1.jpg" alt="" class="project-img" data-prefix="lotem" onerror="this.style.display='none'; this.alt='';">
+                        <img src="images/lotem1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="lotem" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
                         <div class="project-info-top">
@@ -1317,7 +1333,7 @@
 
                 <div class="project-card" data-category="apartments">
                     <div class="project-img-wrapper" onclick="openGallery('ramon')">
-                        <img src="images/ramon1.jpg" alt="" class="project-img" data-prefix="ramon" onerror="this.style.display='none'; this.alt='';">
+                        <img src="images/ramon1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="ramon" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
                         <div class="project-info-top">
@@ -1329,7 +1345,7 @@
                 </div>
                 <div class="project-card" data-category="apartments">
                     <div class="project-img-wrapper" onclick="openGallery('harel')">
-                        <img src="images/harel1.jpg" alt="" class="project-img" data-prefix="harel" onerror="this.style.display='none'; this.alt='';">
+                        <img src="images/harel1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="harel" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
                         <div class="project-info-top">
@@ -1341,7 +1357,7 @@
                 </div>
                 <div class="project-card" data-category="apartments">
                     <div class="project-img-wrapper" onclick="openGallery('sharir_friedman')">
-                        <img src="images/sharir_friedman1.jpg" alt="" class="project-img" data-prefix="sharir_friedman" onerror="this.style.display='none'; this.alt='';">
+                        <img src="images/sharir_friedman1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="sharir_friedman" onerror="this.style.display='none'; this.alt='';">
                     </div>
                     <div class="project-info">
                         <div class="project-info-top">
@@ -1537,19 +1553,19 @@
         function initProjectCardImages() {
             document.querySelectorAll('.project-img[data-prefix]').forEach(img => {
                 let prefix = img.getAttribute('data-prefix');
-                let paths = [
-                    `images/${prefix}1.jpg`, `images/${prefix}1.png`,
+                let fallbacks = [
+                    `images/${prefix}1.png`,
                     `images/${prefix}_1.jpg`, `images/${prefix}_1.png`,
-                    `images/${prefix}1_h.jpg`, `images/${prefix}1_h.png`,
-                    `images/${prefix}1_v.jpg`, `images/${prefix}1_v.png`
+                    `images/${prefix}1_h.jpg`, `images/${prefix}1_v.jpg`
                 ];
-                let tried = 0, loaded = false;
-                paths.forEach(p => {
-                    let t = new Image();
-                    t.onload = () => { if (!loaded) { loaded = true; img.src = p; } };
-                    t.onerror = () => { tried++; if (!loaded && tried >= paths.length) img.style.display = 'none'; };
-                    t.src = p;
-                });
+                let idx = 0;
+                img.onerror = function() {
+                    if (idx < fallbacks.length) {
+                        this.src = fallbacks[idx++];
+                    } else {
+                        this.style.display = 'none';
+                    }
+                };
             });
         }
 
@@ -1564,6 +1580,19 @@
                 let img = document.createElement('img');
                 img.src = src;
                 img.alt = '';
+                img.decoding = 'async';
+                if (idx >= 4) {
+                    img.loading = 'lazy';
+                } else {
+                    img.setAttribute('fetchpriority', 'high');
+                }
+                if (i === 1) {
+                    img.setAttribute('fetchpriority', 'high');
+                    img.decoding = 'sync';
+                } else {
+                    img.loading = 'lazy';
+                    img.decoding = 'async';
+                }
                 img.onerror = function() {
                     if (this.src.endsWith('.jpg')) {
                         this.src = `images/home${i}.png`;
@@ -1703,6 +1732,12 @@
                 let img = document.createElement('img');
                 img.src = src;
                 img.alt = '';
+                img.decoding = 'async';
+                if (idx >= 4) {
+                    img.loading = 'lazy';
+                } else {
+                    img.setAttribute('fetchpriority', 'high');
+                }
                 img.onload = function() {
                     if (!isExplicitH && !isExplicitV) {
                         if (img.naturalHeight > img.naturalWidth) {
@@ -1738,6 +1773,10 @@
             singleImg.style.display = 'block';
             singleImg.src = currentSingleImages[currentSingleIndex];
             document.getElementById('lightbox-single-overlay').style.display = 'flex';
+            if (currentSingleImages.length > 1) {
+                new Image().src = currentSingleImages[(currentSingleIndex + 1) % currentSingleImages.length];
+                new Image().src = currentSingleImages[(currentSingleIndex - 1 + currentSingleImages.length) % currentSingleImages.length];
+            }
         }
 
         function closeSingleLightbox() {
@@ -1750,6 +1789,11 @@
             const singleImg = document.getElementById('single-lightbox-img');
             singleImg.style.display = 'block';
             singleImg.src = currentSingleImages[currentSingleIndex];
+            // Preload next and previous images for instant transitions
+            const nextIdx = (currentSingleIndex + 1) % currentSingleImages.length;
+            const prevIdx = (currentSingleIndex - 1 + currentSingleImages.length) % currentSingleImages.length;
+            new Image().src = currentSingleImages[nextIdx];
+            new Image().src = currentSingleImages[prevIdx];
         }
 
         function nextSingleImage() {
