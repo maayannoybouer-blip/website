@@ -1572,42 +1572,45 @@
         function initHomeCarousel() {
             const container = document.getElementById('dynamic-carousel-container');
             const dotsContainer = document.getElementById('dynamic-carousel-dots');
-            
-            for (let i = 1; i <= 6; i++) {
-                let src = `images/home${i}.jpg`;
-                let s = document.createElement('div');
-                s.className = 'carousel-slide' + (i === 1 ? ' active' : '');
-                let img = document.createElement('img');
-                img.src = src;
+            container.innerHTML = '';
+            dotsContainer.innerHTML = '';
+
+            const heroNames = ['home6', 'home5', 'home4', 'home3', 'home2', 'home1'];
+
+            heroNames.forEach((name, idx) => {
+                const s = document.createElement('div');
+                s.className = 'carousel-slide' + (idx === 0 ? ' active' : '');
+
+                const img = document.createElement('img');
+                img.src = `images/${name}.jpg`;
                 img.alt = '';
-                img.decoding = 'async';
-                if (idx >= 4) {
-                    img.loading = 'lazy';
-                } else {
-                    img.setAttribute('fetchpriority', 'high');
-                }
-                if (i === 1) {
+                if (idx === 0) {
                     img.setAttribute('fetchpriority', 'high');
                     img.decoding = 'sync';
                 } else {
-                    img.loading = 'lazy';
+                    img.loading = 'eager';
                     img.decoding = 'async';
                 }
                 img.onerror = function() {
                     if (this.src.endsWith('.jpg')) {
-                        this.src = `images/home${i}.png`;
+                        this.src = `images/${name}.png`;
+                    } else if (this.src.endsWith('.png')) {
+                        this.src = `images/${name}.jpeg`;
+                    } else if (this.src.endsWith('.jpeg')) {
+                        this.src = `images/${name}.webp`;
                     } else {
                         s.style.display = 'none';
                     }
                 };
+
                 s.appendChild(img);
                 container.appendChild(s);
 
-                let dot = document.createElement('span');
-                dot.className = 'dot' + (i === 1 ? ' active' : '');
-                dot.onclick = () => currentSlide(i - 1);
+                const dot = document.createElement('span');
+                dot.className = 'dot' + (idx === 0 ? ' active' : '');
+                dot.onclick = () => currentSlide(idx);
                 dotsContainer.appendChild(dot);
-            }
+            });
 
             setInterval(nextSlide, 4500);
         }
@@ -1642,18 +1645,18 @@
         };
 
         const projectSubtitles = {
-            'shoresh': 'תכנון ועיצוב בית פרטי בשער העמקים | מעין נויבאואר\nאדריכלות פרויקט הרחבה מול הכרמל | ענת פיק',
-            'gonda': 'תכנון ועיצוב בית פרטי בשער העמקים | מעין נויבאואר\nאדריכלות פרויקט הרחבה מול הכרמל | ענת פיק',
-            'ziv': 'תכנון ועיצוב בית עירוני דו־מפלסי בבניין משותף בתל אביב | מעין נויבאואר\nאדריכלות הרחבה | מירב מרלי',
-            'gefen': 'יחידת מגורים בבית משותף בעין כרם\nצילום | נויה שילוני חביב',
-            'melodic': 'יחידת מגורים בבית משותף בעין כרם\nצילום | נויה שילוני חביב',
-            'beeri': 'יחידת מגורים בבית משותף בעין כרם\nצילום | נויה שילוני חביב',
-            'ela': 'יחידת מגורים בבית משותף בעין כרם\nצילום | נויה שילוני חביב',
-            'kerem': 'יחידת מגורים בבית משותף בעין כרם\nצילום | נויה שילוני חביב',
-            'lotem': "גראז' שהוסב ליחידת מגורים בעין כרם",
-            'ramon': 'תכנון ועיצוב דירה אורבנית בתל אביב | מעין נויבאואר\nאדריכלות | אייל בלייוייס',
-            'harel': 'תכנון ועיצוב דירה אורבנית בתל אביב\nצילום | נעה נאון',
-            'sharir_friedman': 'תכנון ועיצוב דירה בפרויקט תמ"א בתל אביב'
+            'shoresh': 'בית פרטי בשער העמקים\n תכנון ועיצוב פנים | מעין נויבאואר\nאדריכלות | ענת פיק',
+            'gonda': 'בית פרטי בשער העמקים\n תכנון ועיצוב פנים | מעין נויבאואר\nאדריכלות | ענת פיק',
+	'ziv': 'בית דו־מפלסי בבניין משותף בת"א\n תכנון ועיצוב פנים | מעין נויבאואר\nאדריכלות | מירב מרלי',
+            'gefen': 'יחידת מגורים בבית משותף בעין כרם\n תכנון ועיצוב פנים | מעין נויבאואר\nצילום | נויה שילוני חביב',
+            'melodic':'יחידת מגורים בבית משותף בעין כרם\n תכנון ועיצוב פנים | מעין נויבאואר\nצילום | נויה שילוני חביב',
+            'beeri':'יחידת מגורים בבית משותף בעין כרם\n תכנון ועיצוב פנים | מעין נויבאואר\nצילום | נויה שילוני חביב',
+            'ela': 'יחידת מגורים בבית משותף בעין כרם\n תכנון ועיצוב פנים | מעין נויבאואר\nצילום | נויה שילוני חביב',
+            'kerem': 'יחידת מגורים בבית משותף בעין כרם\n תכנון ועיצוב פנים | מעין נויבאואר\nצילום | נויה שילוני חביב',
+            'lotem': "גראז' שהוסב ליחידת מגורים בעין כרם\n תכנון ועיצוב פנים | מעין נויבאואר",
+	'ramon': 'דירה אורבנית בת"א\n תכנון ועיצוב פנים | מעין נויבאואר\nאדריכלות | אייל בלייוייס',
+            'harel': 'דירה אורבנית בת"א\n תכנון ועיצוב פנים | מעין נויבאואר\nצילום | נעה נאון',
+            'sharir_friedman': 'דירה בפרויקט תמ"א בתל אביב\n תכנון ועיצוב פנים | מעין נויבאואר'
         };
 
         const projectDescriptions = {			
