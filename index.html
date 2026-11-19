@@ -1575,14 +1575,21 @@
             container.innerHTML = '';
             dotsContainer.innerHTML = '';
 
-            const heroNames = ['home6', 'home5', 'home4', 'home3', 'home2', 'home1'];
+            const heroImages = [
+                'images/home6.jpg',
+                'images/home5.jpg',
+                'images/home4.jpg',
+                'images/home3.jpg',
+                'images/home2.jpg',
+                'images/home1.jpg'
+            ];
 
-            heroNames.forEach((name, idx) => {
+            heroImages.forEach((src, idx) => {
                 const s = document.createElement('div');
                 s.className = 'carousel-slide' + (idx === 0 ? ' active' : '');
 
                 const img = document.createElement('img');
-                img.src = `images/${name}.jpg`;
+                img.src = src;
                 img.alt = '';
                 if (idx === 0) {
                     img.setAttribute('fetchpriority', 'high');
@@ -1591,17 +1598,6 @@
                     img.loading = 'eager';
                     img.decoding = 'async';
                 }
-                img.onerror = function() {
-                    if (this.src.endsWith('.jpg')) {
-                        this.src = `images/${name}.png`;
-                    } else if (this.src.endsWith('.png')) {
-                        this.src = `images/${name}.jpeg`;
-                    } else if (this.src.endsWith('.jpeg')) {
-                        this.src = `images/${name}.webp`;
-                    } else {
-                        s.style.display = 'none';
-                    }
-                };
 
                 s.appendChild(img);
                 container.appendChild(s);

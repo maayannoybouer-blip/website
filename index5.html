@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Noybouer - תכנון ועיצוב פנים</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Heebo:wght@300;400;500;700&family=Explora&family=Miriam+Libre:wght@400;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --black-soft: #111111;
+            --black-hover: #222222;
+            --light-gray: #F4F4F4;
+            --card-bg: #FAFAFA;
+            --gray-text: #666666;
+            --dark: #000000;
+            --white: #FFFFFF;
+            --transition: all 0.4s ease;
+            --section-padding: 40px;
+            --carousel-height: 600px;
+            --heading-color: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0 !important;
+        }
+
+        .about-image-wrapper, .about-image {
+            border-radius: 50% !important;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            font-weight: 300;
+            color: var(--black);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            text-align: right;
+        }
+
+        h1, h2, h3 {
+            font-weight: 300;
+            color: var(--heading-color);
+            text-align: right;
+            font-family: 'Heebo', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--black);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 400;
+            font-size: 1.05rem;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            font-family: 'Heebo', sans-serif;
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            color: #CCCCCC;
+        }
+
+        nav ul li a.active {
+            color: var(--white);
+            font-weight: 400;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        section {
+            padding: var(--section-padding) 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media(max-width: 900px) {
+            section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        .hero-top-row {
+            max-width: 1200px;
+            margin: 30px auto 20px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 10px;
+        }
+
+        .hero-logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-logo-img {
+            height: 55px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .hero-tagline {
+            font-size: 1.35rem;
+            color: var(--black);
+            font-weight: 300;
+            font-family: 'Heebo', sans-serif;
+            line-height: 1;
+            position: relative;
+            top: -4px;
+        }
+
+        .hero-section {
+            padding-top: 80px;
+            background-color: var(--white);
+        }
+
+        .hero-carousel-wrapper {
+            position: relative;
+            max-width: 1360px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 60px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            height: var(--carousel-height);
+            margin: 0 auto;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            background-color: #E5E7EB;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #4B5563;
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.2s ease;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-arrow svg {
+            width: 16px;
+            height: 32px;
+            stroke-width: 1.1px;
+            transition: stroke 0.2s ease;
+        }
+
+        .carousel-arrow:hover, .carousel-arrow:active {
+            color: #000000;
+        }
+
+        .carousel-arrow.prev {
+            right: 10px;
+        }
+
+        .carousel-arrow.next {
+            left: 10px;
+        }
+
+        @media(max-width: 1350px) {
+            .hero-carousel-wrapper {
+                padding: 0 10px;
+                max-width: 1200px;
+            }
+            .carousel-arrow.prev {
+                right: -25px;
+            }
+            .carousel-arrow.next {
+                left: -25px;
+            }
+        }
+        @media(max-width: 900px) {
+            .carousel-arrow.prev {
+                right: 5px;
+                background: rgba(255,255,255,0.7);
+                padding: 5px 10px;
+            }
+            .carousel-arrow.next {
+                left: 5px;
+                background: rgba(255,255,255,0.7);
+                padding: 5px 10px;
+            }
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #D1D5DB;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background-color: var(--black);
+        }
+
+        .hero-cta-container {
+            text-align: right;
+            max-width: 1200px;
+            margin: 12px auto 0 auto;
+            padding: 0 10px;
+        }
+
+        .btn-solid {
+            display: inline-block;
+            background-color: var(--black);
+            color: var(--white);
+            padding: 12px 35px;
+            text-decoration: none;
+            font-weight: 300;
+            font-family: 'Heebo', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-solid:hover {
+            background-color: var(--black-hover);
+        }
+
+        .projects-section {
+            background-color: var(--white);
+            padding-top: 30px;
+        }
+
+        .section-header {
+            text-align: right;
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .section-header p {
+            color: var(--gray-text);
+            font-size: 1.05rem;
+            font-weight: 300;
+            font-family: 'Heebo', sans-serif;
+        }
+
+        .subtitle-line-second {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .heart-icon {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            margin-right: 4px;
+            margin-left: 2px;
+        }
+        .heart-icon svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-bottom: 35px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
+            padding-bottom: 5px;
+        }
+
+        @media(max-width: 900px) {
+            .filter-buttons {
+                flex-wrap: nowrap;
+                overflow-x: hidden;
+                justify-content: flex-start;
+                gap: 6px;
+                width: 100%;
+                padding: 0 2px;
+            }
+            .filter-btn {
+                flex: 0 1 auto;
+                padding: 7px 12px !important;
+                font-size: 0.94rem !important;
+                text-align: center;
+                white-space: nowrap;
+                letter-spacing: -0.3px;
+            }
+        }
+
+        .filter-btn {
+            padding: 8px 22px;
+            border: 1px solid #CCCCCC;
+            background: var(--white);
+            color: var(--black);
+            cursor: pointer;
+            font-family: 'Heebo', sans-serif;
+            font-weight: 300;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover {
+            background: var(--light-gray);
+        }
+
+        .filter-btn.active {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+        }
+
+        .project-img-wrapper {
+            overflow: hidden;
+            cursor: pointer;
+            height: 270px;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .project-img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.03);
+        }
+
+        .project-info {
+            padding: 25px 0;
+            text-align: right;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-info-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 12px;
+            padding: 0;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            color: var(--heading-color);
+            font-weight: 300;
+            margin: 0;
+            text-align: left;
+        }
+
+        .project-info span.category-badge {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: #111111;
+            background: var(--light-gray);
+            padding: 4px 12px;
+            font-weight: 400;
+            font-family: 'Heebo', sans-serif;
+            border: 1px solid #CBD5E1;
+            text-align: right;
+        }
+
+        .project-info p {
+            color: var(--gray-text);
+            font-size: 0.98rem;
+            font-weight: 300;
+            margin-bottom: 0;
+            padding: 0;
+            font-family: 'Heebo', sans-serif;
+            text-align: right;
+        }
+
+        .about-section {
+            background-color: var(--white);
+            padding: 25px 0;
+        }
+
+        .about-section-header {
+            display: block;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .about-section-header h2 {
+            font-size: 2.3rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #E5E7EB;
+            padding: 30px 50px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            min-height: 205px;
+        }
+
+        .about-image-wrapper {
+            text-align: center;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #CCCCCC;
+            background-color: var(--white);
+            overflow: hidden;
+            border-radius: 50% !important;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 50% !important;
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            color: var(--black);
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            white-space: pre-line;
+            text-align: right;
+            font-family: 'Heebo', sans-serif;
+        }
+
+        .signature-container {
+            margin-top: 10px;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .signature-img {
+            width: 170px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .testimonials-section {
+            background-color: var(--white);
+            padding: 25px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 35px;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .testimonial-card .quote-open {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 2.5rem;
+            color: var(--black);
+            opacity: 0.2;
+            font-family: serif;
+        }
+
+        .testimonial-card .quote-close {
+            position: absolute;
+            bottom: 15px;
+            left: 25px;
+            font-size: 2.5rem;
+            color: var(--black);
+            opacity: 0.2;
+            font-family: serif;
+        }
+
+        .testimonial-card p {
+            font-size: 1.02rem;
+            color: var(--gray-text);
+            font-weight: 300;
+            margin: 15px 0;
+            line-height: 1.7;
+            text-align: right;
+        }
+
+        .testimonial-author {
+            font-weight: 300;
+            color: var(--heading-color);
+            font-size: 1.2rem;
+            font-family: 'Heebo', sans-serif;
+            text-align: right;
+        }
+
+        .contact-section {
+            background-color: var(--white);
+            padding: 20px 0;
+        }
+
+        .contact-container {
+            max-width: 520px;
+            margin-right: 0;
+            margin-left: auto;
+            background: var(--white);
+            color: var(--black);
+            padding: 30px 35px;
+            border: 1px solid #6B7280;
+            text-align: right;
+            position: relative;
+        }
+
+        .contact-container .section-header h2 {
+            color: var(--black);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 300;
+            color: var(--black);
+            text-align: right;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px 16px;
+            border: 1px solid #CCCCCC;
+            font-family: 'Heebo', sans-serif;
+            font-weight: 300;
+            font-size: 0.98rem;
+            background-color: var(--white);
+            color: var(--black);
+            text-align: right;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--black);
+        }
+
+        .form-submit-row {
+            position: absolute;
+            left: -360px;
+            bottom: 230px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            width: 260px;
+        }
+
+        .btn-submit {
+            display: inline-block;
+            padding: 14px 40px;
+            background-color: var(--black);
+            color: var(--white);
+            border: none;
+            font-size: 1.05rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Heebo', sans-serif;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--black-hover);
+        }
+
+        .contact-extra-info {
+            text-align: right;
+            color: var(--black);
+            font-family: 'Heebo', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            width: 100%;
+        }
+
+        .contact-extra-info .contact-title-small {
+            font-size: 1.05rem;
+            font-weight: 400;
+            margin-bottom: 4px;
+            margin-top: 8px;
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .whatsapp-img-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        .contact-extra-info a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        #success-message {
+            display: none;
+            background-color: var(--light-gray);
+            color: var(--black);
+            padding: 15px;
+            text-align: center;
+            font-weight: 400;
+            font-size: 1rem;
+            margin-top: 15px;
+            border: 1px solid #CCCCCC;
+        }
+
+        @media(max-width: 1050px) {
+            .form-submit-row {
+                position: static;
+                left: auto;
+                bottom: auto;
+                margin-top: 20px;
+                width: 100%;
+            }
+        }
+
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 25px 0;
+            text-align: right;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .footer-logo-img {
+            height: 38px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-details {
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-details a {
+            color: white;
+            text-decoration: none;
+            font-weight: 300;
+        }
+
+        .footer-divider {
+            border-left: 1px solid #666666;
+            height: 16px;
+            display: inline-block;
+        }
+
+        #lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #FFFFFF;
+            z-index: 3000;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        .lightbox-header-container {
+            width: 100%;
+            max-width: 1390px;
+            margin: 0 auto 30px auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-bottom: 1px solid #E5E7EB;
+            text-align: right;
+        }
+
+        .lightbox-close {
+            color: var(--black);
+            font-size: 2.2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        #lightbox-subtitle {
+            font-family: 'Heebo', sans-serif;
+            font-size: 1.15rem;
+            color: #666666 !important;
+            font-weight: 400;
+            white-space: pre-line;
+        }
+
+        #lightbox-desc {
+            font-family: 'Heebo', sans-serif;
+            font-size: 1.05rem;
+            color: #666666 !important;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 1300px;
+        }
+
+        /* הגדרת גריד עם גובה שורה קבוע (Fixed Height) ליישור מושלם בין תמונות אורך ורוחב */
+        #lightbox-images-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 420px;
+            grid-auto-flow: dense;
+            gap: 14px;
+            width: 100%;
+            max-width: 1450px;
+            margin: 0 auto;
+            padding: 0 30px 80px 30px;
+            direction: ltr;
+        }
+
+        .lightbox-img-wrapper {
+            overflow: hidden;
+            background-color: #F9FAFB;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            cursor: pointer;
+        }
+
+        /* תמונת רוחב תופסת 2 עמודות ושורה 1 (גובה קבוע 290px) */
+        .lightbox-img-wrapper.landscape {
+            grid-column: span 2;
+            grid-row: span 1;
+        }
+
+        /* תמונת אורך תופסת עמודה 1 ושורה 1 (גובה קבוע 290px בדיוק כמו הרוחב) */
+        .lightbox-img-wrapper.portrait {
+            grid-column: span 1;
+            grid-row: span 1;
+        }
+
+        .lightbox-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media(max-width: 900px) {
+            .projects-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 10px 15px;
+            }
+            .about-image-wrapper {
+                margin: 24px auto 10px auto;
+            }
+            .about-content p {
+                margin-bottom: 5px;
+            }
+            .mobile-menu-toggle {
+                display: block;
+            }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--black);
+                padding: 20px 0;
+                gap: 15px;
+                text-align: center;
+            }
+            nav ul.open {
+                display: flex;
+            }
+            .hero-top-row {
+                flex-direction: column-reverse;
+                align-items: flex-end;
+                gap: 10px;
+                text-align: left;
+                padding: 0 12px;
+            }
+            .hero-logo-container {
+                justify-content: flex-end;
+                width: 100%;
+            }
+            .hero-logo-img {
+                margin: 0;
+                height: 42px;
+            }
+            .hero-tagline {
+                text-align: left;
+                width: 100%;
+                font-size: 1.15rem;
+                top: 0;
+            }
+            .hero-cta-container {
+                text-align: right;
+                margin-top: 28px;
+                padding: 0 12px;
+            }
+            .hero-cta-container .btn-solid {
+                padding: 8px 22px;
+                font-size: 0.9rem;
+            }
+            #lightbox-images-container {
+                grid-template-columns: 1fr !important;
+                grid-auto-rows: auto !important;
+                padding: 0 15px 40px 15px;
+            }
+            .lightbox-img-wrapper {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+                aspect-ratio: 4 / 5;
+            }
+        }
+
+        #lightbox-single-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #FFFFFF;
+            z-index: 4000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .single-viewer-wrapper {
+            position: relative;
+            max-width: 950px;
+            width: 100%;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox-single-overlay .single-img-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox-single-overlay img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        #lightbox-single-overlay .lightbox-close {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            font-size: 2.2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--black);
+            z-index: 5000;
+        }
+
+        #lightbox-single-overlay .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #4B5563;
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.2s ease;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox-single-overlay .carousel-arrow svg {
+            width: 16px;
+            height: 32px;
+            stroke-width: 1.1px;
+            transition: stroke 0.2s ease;
+        }
+
+        #lightbox-single-overlay .carousel-arrow:hover, #lightbox-single-overlay .carousel-arrow:active {
+            color: #000000;
+        }
+
+        #lightbox-single-overlay .carousel-arrow.prev {
+            right: -55px;
+        }
+
+        #lightbox-single-overlay .carousel-arrow.next {
+            left: -55px;
+        }
+
+        @media(max-width: 1100px) {
+            #lightbox-single-overlay .carousel-arrow.prev {
+                right: 15px;
+                background: rgba(255,255,255,0.8);
+            }
+            #lightbox-single-overlay .carousel-arrow.next {
+                left: 15px;
+                background: rgba(255,255,255,0.8);
+            }
+        }
+
+        @media(max-width: 900px) {
+            #lightbox-single-overlay {
+                padding: 15px;
+            }
+            #lightbox-single-overlay .lightbox-close {
+                top: 15px;
+                left: 20px;
+            }
+            #lightbox-single-overlay .carousel-arrow {
+                display: none !important;
+            }
+        }
+
+        .footer-mobile-wrapper {
+            display: none;
+            width: 100%;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .desktop-footer-details {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .desktop-footer-logo {
+            display: block;
+        }
+
+        @media(max-width: 900px) {
+            .desktop-footer-details, .desktop-footer-logo {
+                display: none !important;
+            }
+            .footer-mobile-wrapper {
+                display: flex !important;
+            }
+            .footer-mobile-top-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                width: 100%;
+            }
+            .footer-mobile-name {
+                text-align: right;
+                color: var(--white);
+                font-size: 1rem;
+                font-weight: 300;
+            }
+            .footer-mobile-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+            .footer-mobile-row a {
+                color: var(--white);
+                text-decoration: none;
+                font-weight: 300;
+                font-size: 0.95rem;
+            }
+            .footer-mobile-logo {
+                text-align: left;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+            }
+            .footer-mobile-logo .footer-logo-img {
+                height: 23px;
+                width: auto;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="תפריט">&#9776;</button>
+            <nav>
+                <ul id="main-nav-list">
+                    <li><a href="#home" class="active" data-target="home">בית</a></li>
+                    <li><a href="#projects" data-target="projects">פרויקטים</a></li>
+                    <li><a href="#about" data-target="about">הסטודיו</a></li>
+                    <li><a href="#testimonials" data-target="testimonials">לקוחות מספרים</a></li>
+                    <li><a href="#contact" data-target="contact">דברו איתי</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section visible">
+        <div class="hero-top-row">
+            <div class="hero-tagline">כל מרחב מתחיל מסיפור</div>
+            <div class="hero-logo-container">
+                <img src="images/Logo.png" alt="" class="hero-logo-img" onerror="this.onerror=null; this.src='images/logo.png'; this.onerror=function(){this.style.display='none'; this.alt='';};">
+            </div>
+        </div>
+
+        <div class="hero-carousel-wrapper">
+            <button class="carousel-arrow prev" onclick="prevSlide()" title="תמונה קודמת">
+                <svg width="20" height="36" viewBox="0 0 20 36" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2L18 18L2 34"/></svg>
+            </button>
+            <div class="carousel-container" id="dynamic-carousel-container"></div>
+            <button class="carousel-arrow next" onclick="nextSlide()" title="תמונה הבאה">
+                <svg width="20" height="36" viewBox="0 0 20 36" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2L2 18L18 34"/></svg>
+            </button>
+        </div>
+        <div class="carousel-dots" id="dynamic-carousel-dots"></div>
+
+        <div class="hero-cta-container">
+            <a href="#contact" class="btn-solid" onclick="event.preventDefault(); scrollToSection('contact');">דברו איתי</a>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>פרויקטים</h2>
+                <p>
+                    <span class="subtitle-desktop-flex">
+                        <span class="subtitle-line">מרחבים שעוצבו עם חיבור ללקוחות</span>
+                        <span class="subtitle-line-second">
+                            ובאהבה לפרטים הקטנים
+                            <span class="heart-icon">
+                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                            </span>
+                        </span>
+                    </span>
+                </p>
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterProjects('all', this)">הכל</button>
+                <button class="filter-btn" onclick="filterProjects('private', this)">בתים פרטיים</button>
+                <button class="filter-btn" onclick="filterProjects('studio', this)">יחידות מגורים</button>
+                <button class="filter-btn" onclick="filterProjects('apartments', this)">דירות</button>
+            </div>
+
+            <div class="projects-grid" id="projects-grid-container">
+                <div class="project-card" data-category="private">
+                    <div class="project-img-wrapper" onclick="openGallery('shoresh')">
+                        <img src="images/shoresh1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="shoresh" onerror="this.style.display='none'; this.alt='';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-info-top">
+                            <h3>משפחת שורש</h3>
+                            <span class="category-badge">בתים פרטיים</span>
+                        </div>
+                        <p>חללים פתוחים, תאורה טבעית עשירה ופלטת צבעים שמאפיינת את הפשטות הלב והיופי של המשפחה</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="private">
+                    <div class="project-img-wrapper" onclick="openGallery('gonda')">
+                        <img src="images/gonda1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="gonda" onerror="this.style.display='none'; this.alt='';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-info-top">
+                            <h3>משפחת גונדה</h3>
+                            <span class="category-badge">בתים פרטיים</span>
+                        </div>
+                        <p>תכנון מדויק, חומרים טבעיים וזרימה מושלמת בין פנים לחוץ. כך זה נראה כשהלקוחה היא אדריכלית נוף מוכשרת</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="private">
+                    <div class="project-img-wrapper" onclick="openGallery('ziv')">
+                        <img src="images/ziv1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="ziv" onerror="this.style.display='none'; this.alt='';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-info-top">
+                            <h3>משפחת זיו</h3>
+                            <span class="category-badge">בתים פרטיים</span>
+                        </div>
+                        <p>עיצוב פונקציונלי עם קריצה צבעונית, שנתפר ביחד עם לקוחה שיודעת לצייר את השפה שלה.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="studio">
+                    <div class="project-img-wrapper" onclick="openGallery('gefen')">
+                        <img src="images/gefen1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="gefen" onerror="this.style.display='none'; this.alt='';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-info-top">
+                            <h3>גפן</h3>
+                            <span class="category-badge">יחידות מגורים</span>
+                        </div>
+                        <p>מרחב אינטימי עם תכנון מדויק לניצול אופטימלי של החלל, שבו אילוצים מבניים הפכו לפרטיים מעניינים</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="studio">
+                    <div class="project-img-wrapper" onclick="openGallery('melodic')">
+                        <img src="images/melodic1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="melodic" onerror="this.style.display='none'; this.alt='';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-info-top">
+                            <h3>מלודי</h3>
+                            <span class="category-badge">יחידות מגורים</span>
+                        </div>
+                        <p>יחידת סטודיו שכל פינה בה פונה אל הנוף ומקיימת דיאלוג פואטי בין פנים לחוץ.</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="studio">
+                    <div class="project-img-wrapper" onclick="openGallery('beeri')">
+                        <img src="images/beeri1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="beeri" onerror="this.style.display='none'; this.alt='';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-info-top">
+                            <h3>בארי</h3>
+                            <span class="category-badge">יחידות מגורים</span>
+                        </div>
+                        <p>עיצוב חם ומזמין המשתלב בהרמוניה מושלמת עם הסביבה, שמתרחב עם המון כניסה של אור טבעי </p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="studio">
+                    <div class="project-img-wrapper" onclick="openGallery('ela')">
+                        <img src="images/ela1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="ela" onerror="this.style.display='none'; this.alt='';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-info-top">
+                            <h3>אלה</h3>
+                            <span class="category-badge">יחידות מגורים</span>
+                        </div>
+                        <p>עיצוב נקי ומוקפד עם דגש על חומריות טבעית, לצד אור טבעי נדיב המלווה את החלל ויוצר תחושת השראה מתמשכת.</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="studio">
+                    <div class="project-img-wrapper" onclick="openGallery('kerem')">
+                        <img src="images/kerem1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="kerem" onerror="this.style.display='none'; this.alt='';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-info-top">
+                            <h3>כרם</h3>
+                            <span class="category-badge">יחידות מגורים</span>
+                        </div>
+                        <p>עיצוב מאוזן בין הנתונים הקיימים של המבנה לבין האלמנטים החדשים עם חיבור למקום</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="studio">
+                    <div class="project-img-wrapper" onclick="openGallery('lotem')">
+                        <img src="images/lotem1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="lotem" onerror="this.style.display='none'; this.alt='';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-info-top">
+                            <h3>לוטם</h3>
+                            <span class="category-badge">יחידות מגורים</span>
+                        </div>
+                        <p>תכנון יצירתי שהפך מגראז' פשוט למרחב מזמין שמשחק בין הפנים לחוץ, ושנעים לשהות בו.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="apartments">
+                    <div class="project-img-wrapper" onclick="openGallery('ramon')">
+                        <img src="images/ramon1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="ramon" onerror="this.style.display='none'; this.alt='';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-info-top">
+                            <h3>משפחת רמון</h3>
+                            <span class="category-badge">דירות</span>
+                        </div>
+                        <p>תכנון מחדש של פנים הדירה ליצירת זרימה הרמונית בין החללים הציבוריים, לצד סטיילינג אישי שנבחר בקפידה על ידי הלקוחה.</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="apartments">
+                    <div class="project-img-wrapper" onclick="openGallery('harel')">
+                        <img src="images/harel1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="harel" onerror="this.style.display='none'; this.alt='';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-info-top">
+                            <h3>הראל</h3>
+                            <span class="category-badge">דירות</span>
+                        </div>
+                        <p>פרויקט שנולד מתוך שותפות יצירתית עם לקוחה מלאת רעיונות, שבו ההשראה הגיעה מכל עבר</p>
+                    </div>
+                </div>
+                <div class="project-card" data-category="apartments">
+                    <div class="project-img-wrapper" onclick="openGallery('sharir_friedman')">
+                        <img src="images/sharir_friedman1.jpg" alt="" class="project-img" loading="lazy" decoding="async" data-prefix="sharir_friedman" onerror="this.style.display='none'; this.alt='';">
+                    </div>
+                    <div class="project-info">
+                        <div class="project-info-top">
+                            <h3>שריר פרידמן</h3>
+                            <span class="category-badge">דירות</span>
+                        </div>
+                        <p>תכנון מחדש של דירה ישנה, שתרגם את החזון של הלקוחות למרחב הרמוני המאזן בין יחד לבין ביטוי אישי.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="section-inner">
+            <div class="about-section-header">
+                <h2>הסטודיו</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-image-wrapper">
+                    <img src="images/profil.png" alt="" class="about-image" onerror="this.onerror=null; this.src='images/profil.jpg'; this.onerror=function(){this.style.display='none';};">
+                </div>
+                <div class="about-content">
+                    <p>אני מעצבת בתים ומרחבים שנולדים מתוך הסיפור שלכם ושייכות למקום.
+הם מיועדים לחיים האמיתיים, מחברים בין אנשים ומייצרים תחושת שייכות.
+
+חומר שמתיישב טוב, אור במקום הנכון,
+פינה שנוח לשבת בה.
+הפרטים האלה מספרים מי אתם, בלי שצריך להסביר.</p>
+                    <div class="signature-container">
+                        <img src="images/signature.jpg" alt="" class="signature-img" onerror="this.onerror=null; this.src='images/signature.png'; this.onerror=function(){this.style.display='none';};">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section">
+        <div class="section-inner">
+            <div class="section-header">
+                <h2>לקוחות מספרים</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <span class="quote-open">“</span>
+                    <p>מעין הצליחה לקרוא בדיוק את הראש שלנו ולהפוך בית קבלן סטנדרטי למרחב חם, מלא אופי וכל כך מדויק לחיים שלנו!</p>
+                    <span class="quote-close">”</span>
+                    <div class="testimonial-author">משפחת שורש</div>
+                </div>
+                <div class="testimonial-card">
+                    <span class="quote-open">“</span>
+                    <p>העבודה עם מעין הייתה חוויה מעשירה ורגועה. הרגישות לחומרים ולתאורה ניכרת בכל פינה בבית.</p>
+                    <span class="quote-close">”</span>
+                    <div class="testimonial-author">משפחת זיו</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="section-inner">
+            <div class="contact-container">
+                <div class="section-header" style="margin-bottom: 20px;">
+                    <h2>דברו איתי</h2>
+                </div>
+                <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleFormSubmit(event)">
+                    <input type="hidden" name="form-name" value="contact">
+                    <p style="display:none;"><label>Don't fill this out: <input name="bot-field"></label></p>
+                    <div class="form-group">
+                        <label for="name">שם מלא</label>
+                        <input type="text" id="name" name="name" required placeholder="הקלד את שמך המלא...">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">טלפון</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="מספר הטלפון שלך...">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">אימייל</label>
+                        <input type="email" id="email" name="email" required placeholder="כתובת האימייל שלך...">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">ספרו לי על הפרויקט שלכם</label>
+                        <textarea id="message" name="message" rows="4" placeholder="כמה מילים על הפרויקט ועל מה שחשוב לכם..."></textarea>
+                    </div>
+                    <div class="form-submit-row">
+                        <button type="submit" class="btn-submit">שליחת הודעה</button>
+                        <div class="contact-extra-info">
+                            <div class="contact-title-small">כתבו מייל</div>
+                            <div class="contact-detail-small"><a href="mailto:maayan.noybouer@gmail.com">maayan.noybouer@gmail.com</a></div>
+                            <div class="contact-title-small">
+                                <a href="https://wa.me/972509325563" target="_blank" class="whatsapp-link">
+                                    <span>כתבו whatsapp</span>
+                                    <img src="images/whatsapp.png" alt="" class="whatsapp-img-icon" onerror="this.style.display='none';">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div id="success-message">הטופס נשלח בהצלחה! מעין תחזור אליך בהקדם.</div>
+            </div>
+            <div style="margin-bottom: 40px;"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-mobile-wrapper">
+                <div class="footer-mobile-top-row">
+                    <div class="footer-mobile-name">מעין נויבאואר</div>
+                    <div class="footer-mobile-logo">
+                        <img src="images/Logo.png" alt="" class="footer-logo-img" onerror="this.onerror=null; this.src='images/logo.png'; this.onerror=function(){this.style.display='none';};">
+                    </div>
+                </div>
+                <div class="footer-mobile-row">
+                    <a href="tel:0509325563" class="footer-phone-link">050-9325563</a>
+                    <a href="mailto:maayan.noybouer@gmail.com" class="footer-email-link">maayan.noybouer@gmail.com</a>
+                </div>
+            </div>
+            <div class="footer-details desktop-footer-details">
+                <span class="footer-name">מעין נויבאואר</span>
+                <span class="footer-divider"></span>
+                <a href="tel:0509325563">050-9325563</a>
+                <span class="footer-divider"></span>
+                <a href="mailto:maayan.noybouer@gmail.com">maayan.noybouer@gmail.com</a>
+            </div>
+            <img src="images/Logo.png" alt="" class="footer-logo-img desktop-footer-logo" onerror="this.onerror=null; this.src='images/logo.png'; this.onerror=function(){this.style.display='none';};">
+        </div>
+    </footer>
+
+    <div id="lightbox-modal">
+        <div class="lightbox-header-container">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <h3 id="lightbox-title" style="font-size:2.4rem; color:var(--black);">גלריית פרויקט</h3>
+                    <p id="lightbox-subtitle"></p>
+                </div>
+                <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            </div>
+            <p id="lightbox-desc"></p>
+        </div>
+        <div id="lightbox-images-container"></div>
+    </div>
+
+    <!-- Fullscreen Single Image Viewer with Gallery Navigation Arrows -->
+    <div id="lightbox-single-overlay">
+        <button class="lightbox-close single-close" onclick="closeSingleLightbox()" title="סגור">&times;</button>
+        <div class="single-viewer-wrapper">
+            <button class="carousel-arrow prev" onclick="prevSingleImage()" title="תמונה קודמת">
+                <svg width="20" height="36" viewBox="0 0 20 36" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2L18 18L2 34"/></svg>
+            </button>
+            <div class="single-img-container">
+                <img id="single-lightbox-img" src="" alt="" style="display: block;" onerror="this.style.display='none';">
+            </div>
+            <button class="carousel-arrow next" onclick="nextSingleImage()" title="תמונה הבאה">
+                <svg width="20" height="36" viewBox="0 0 20 36" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2L2 18L18 34"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+
+        function scrollToSection(targetId) {
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+                window.scrollTo({ top: targetEl.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
+            }
+        }
+
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                scrollToSection(this.getAttribute('href').substring(1));
+                const navList = document.getElementById('main-nav-list');
+                if (navList.classList.contains('open')) navList.classList.remove('open');
+            });
+        });
+
+        function toggleMobileMenu() {
+            document.getElementById('main-nav-list').classList.toggle('open');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initHomeCarousel();
+            initProjectCardImages();
+        });
+
+        function initProjectCardImages() {
+            document.querySelectorAll('.project-img[data-prefix]').forEach(img => {
+                let prefix = img.getAttribute('data-prefix');
+                let fallbacks = [
+                    `images/${prefix}1.png`,
+                    `images/${prefix}_1.jpg`, `images/${prefix}_1.png`,
+                    `images/${prefix}1_h.jpg`, `images/${prefix}1_v.jpg`
+                ];
+                let idx = 0;
+                img.onerror = function() {
+                    if (idx < fallbacks.length) {
+                        this.src = fallbacks[idx++];
+                    } else {
+                        this.style.display = 'none';
+                    }
+                };
+            });
+        }
+
+        function initHomeCarousel() {
+            const container = document.getElementById('dynamic-carousel-container');
+            const dotsContainer = document.getElementById('dynamic-carousel-dots');
+            container.innerHTML = '';
+            dotsContainer.innerHTML = '';
+
+            const heroNames = ['home6', 'home5', 'home4', 'home3', 'home2', 'home1'];
+
+            heroNames.forEach((name, idx) => {
+                const s = document.createElement('div');
+                s.className = 'carousel-slide' + (idx === 0 ? ' active' : '');
+
+                const img = document.createElement('img');
+                img.src = `images/${name}.jpg`;
+                img.alt = '';
+                if (idx === 0) {
+                    img.setAttribute('fetchpriority', 'high');
+                    img.decoding = 'sync';
+                } else {
+                    img.loading = 'eager';
+                    img.decoding = 'async';
+                }
+                img.onerror = function() {
+                    if (this.src.endsWith('.jpg')) {
+                        this.src = `images/${name}.png`;
+                    } else if (this.src.endsWith('.png')) {
+                        this.src = `images/${name}.jpeg`;
+                    } else if (this.src.endsWith('.jpeg')) {
+                        this.src = `images/${name}.webp`;
+                    } else {
+                        s.style.display = 'none';
+                    }
+                };
+
+                s.appendChild(img);
+                container.appendChild(s);
+
+                const dot = document.createElement('span');
+                dot.className = 'dot' + (idx === 0 ? ' active' : '');
+                dot.onclick = () => currentSlide(idx);
+                dotsContainer.appendChild(dot);
+            });
+
+            setInterval(nextSlide, 4500);
+        }
+
+        let slideIndex = 0;
+        function showSlide(n) {
+            const slides = document.querySelectorAll('.carousel-slide'), dots = document.querySelectorAll('.dot');
+            if (!slides.length) return;
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            slideIndex = (n + slides.length) % slides.length;
+            slides[slideIndex].classList.add('active');
+            dots[slideIndex].classList.add('active');
+        }
+        function currentSlide(n) { showSlide(n); }
+        function nextSlide() { showSlide(slideIndex + 1); }
+        function prevSlide() { showSlide(slideIndex - 1); }
+
+        const projectImageCounts = {
+            'shoresh': 13,
+            'gonda': 15,
+            'ziv': 13,
+            'gefen': 9,
+            'melodic': 12,
+            'beeri': 8,
+            'ela': 11,
+            'kerem': 14,
+            'lotem': 10,
+            'ramon': 10,
+            'harel': 6,
+            'sharir_friedman': 10
+        };
+
+        const projectSubtitles = {
+            'shoresh': 'בית פרטי בשער העמקים\n תכנון ועיצוב פנים | מעין נויבאואר\nאדריכלות | ענת פיק',
+            'gonda': 'בית פרטי בשער העמקים\n תכנון ועיצוב פנים | מעין נויבאואר\nאדריכלות | ענת פיק',
+	'ziv': 'בית דו־מפלסי בבניין משותף בת"א\n תכנון ועיצוב פנים | מעין נויבאואר\nאדריכלות | מירב מרלי',
+            'gefen': 'יחידת מגורים בבית משותף בעין כרם\n תכנון ועיצוב פנים | מעין נויבאואר\nצילום | נויה שילוני חביב',
+            'melodic':'יחידת מגורים בבית משותף בעין כרם\n תכנון ועיצוב פנים | מעין נויבאואר\nצילום | נויה שילוני חביב',
+            'beeri':'יחידת מגורים בבית משותף בעין כרם\n תכנון ועיצוב פנים | מעין נויבאואר\nצילום | נויה שילוני חביב',
+            'ela': 'יחידת מגורים בבית משותף בעין כרם\n תכנון ועיצוב פנים | מעין נויבאואר\nצילום | נויה שילוני חביב',
+            'kerem': 'יחידת מגורים בבית משותף בעין כרם\n תכנון ועיצוב פנים | מעין נויבאואר\nצילום | נויה שילוני חביב',
+            'lotem': "גראז' שהוסב ליחידת מגורים בעין כרם\n תכנון ועיצוב פנים | מעין נויבאואר",
+	'ramon': 'דירה אורבנית בת"א\n תכנון ועיצוב פנים | מעין נויבאואר\nאדריכלות | אייל בלייוייס',
+            'harel': 'דירה אורבנית בת"א\n תכנון ועיצוב פנים | מעין נויבאואר\nצילום | נעה נאון',
+            'sharir_friedman': 'דירה בפרויקט תמ"א בתל אביב\n תכנון ועיצוב פנים | מעין נויבאואר'
+        };
+
+        const projectDescriptions = {			
+            'shoresh': 'חללים פתוחים, תאורה טבעית עשירה ופלטת צבעים שמאפיינת את הפשטות הלב והיופי של המשפחה',
+            'gonda': 'תכנון מדויק, חומרים טבעיים וזרימה מושלמת בין פנים לחוץ. כך זה נראה כשהלקוחה היא אדריכלית נוף מוכשרת',
+            'ziv': 'עיצוב פונקציונלי עם קריצה צבעונית, שנתפר ביחד עם לקוחה שיודעת לצייר את השפה שלה.',
+            'gefen': 'מרחב אינטימי עם תכנון מדויק לניצול אופטימלי של החלל, שבו אילוצים מבניים הפכו לפרטיים מעניינים',
+            'melodic': 'יחידת סטודיו שכל פינה בה פונה אל הנוף ומקיימת דיאלוג פואטי בין פנים לחוץ.',
+            'beeri': 'עיצוב חם ומזמין המשתלב בהרמוניה מושלמת עם הסביבה, שמתרחב עם המון כניסה של אור טבעי ',
+            'ela': 'עיצוב נקי ומוקפד עם דגש על חומריות טבעית, לצד אור טבעי נדיב המלווה את החלל ויוצר תחושת השראה מתמשכת.',
+            'kerem': 'עיצוב מאוזן בין הנתונים הקיימים של המבנה לבין האלמנטים החדשים עם חיבור למקום',
+            'lotem': "תכנון יצירתי שהפך מגראז' פשוט למרחב מזמין שמשחק בין הפנים לחוץ, ושנעים לשהות בו.",
+            'ramon': 'תכנון מחדש של פנים הדירה ליצירת זרימה הרמונית בין החללים הציבוריים,\n לצד סטיילינג אישי שנבחר בקפידה על ידי הלקוחה, המשלים את התכנון ומעניק לבית את אופיו הייחודי.',
+            'harel': 'פרויקט שנולד מתוך שותפות יצירתית עם לקוחה מלאת רעיונות, שבו ההשראה הגיעה מכל עבר -\nמתפריט מסעדה צבעוני, דרך יצירות אמנות ועד מרקמים וצבעים שנאספו מטיולים ברחבי העולם.\nאהבה משותפת לעיצוב, לצבע ולפרטים הקטנים חיברה את כל אלה לכדי סיפור הרמוני אחד.',
+            'sharir_friedman': 'תכנון מחדש של דירה ישנה, שתרגם את החזון של הלקוחות למרחב הרמוני המאזן בין יחד לבין ביטוי אישי. מקום המאפשר לכל אחת מבנות הבית את הפינה שלה, לצד חוויה משותפת של חיים יחד. תהליך שנרקם מתוך שותפות רגישה ואמון הדדי, ונושא את טביעת היד הכנה, הססגונית והייחודית של בנות הבית.',
+        };
+
+        const discoveredCache = {};
+
+        function openGallery(prefix) {
+            let card = document.querySelector(`.project-img[data-prefix="${prefix}"]`)?.closest('.project-card');
+            let title = card ? card.querySelector('h3')?.innerText : '';
+            let cardDesc = card ? card.querySelector('p')?.innerText : '';
+            let desc = projectDescriptions[prefix] || cardDesc;
+            let subtitle = projectSubtitles[prefix] || '';
+
+            if (discoveredCache[prefix]) {
+                showLightboxModal(discoveredCache[prefix], title, subtitle, desc);
+                return;
+            }
+
+            let count = projectImageCounts[prefix] || 10;
+            let paths = [];
+            for (let i = 1; i <= count; i++) {
+                paths.push(`images/${prefix}${i}.jpg`);
+            }
+
+            discoveredCache[prefix] = paths;
+            showLightboxModal(paths, title, subtitle, desc);
+        }
+
+        function showLightboxModal(imagesArray, title, subtitle, desc) {
+            document.getElementById('lightbox-title').innerText = title || 'גלריית פרויקט';
+            const subEl = document.getElementById('lightbox-subtitle');
+            if (subtitle) {
+                subEl.innerText = subtitle;
+                subEl.style.display = 'block';
+            } else {
+                subEl.style.display = 'none';
+            }
+            const descEl = document.getElementById('lightbox-desc');
+            if (desc) {
+                descEl.innerText = desc;
+                descEl.style.display = 'block';
+            } else {
+                descEl.style.display = 'none';
+            }
+
+            const container = document.getElementById('lightbox-images-container');
+            container.innerHTML = '';
+            imagesArray.forEach((src, idx) => {
+                let w = document.createElement('div');
+                w.className = 'lightbox-img-wrapper';
+                let lowerSrc = src.toLowerCase();
+                let isExplicitH = lowerSrc.includes('_h') || lowerSrc.includes('1h') || lowerSrc.includes('2h') || lowerSrc.includes('h.');
+                let isExplicitV = lowerSrc.includes('_v') || lowerSrc.includes('1v') || lowerSrc.includes('2v') || lowerSrc.includes('v.');
+
+                if (isExplicitH) {
+                    w.classList.add('landscape');
+                } else if (isExplicitV) {
+                    w.classList.add('portrait');
+                } else {
+                    w.classList.add('landscape');
+                }
+
+                let img = document.createElement('img');
+                img.src = src;
+                img.alt = '';
+                img.decoding = 'async';
+                if (idx >= 4) {
+                    img.loading = 'lazy';
+                } else {
+                    img.setAttribute('fetchpriority', 'high');
+                }
+                img.onload = function() {
+                    if (!isExplicitH && !isExplicitV) {
+                        if (img.naturalHeight > img.naturalWidth) {
+                            w.classList.remove('landscape');
+                            w.classList.add('portrait');
+                        } else {
+                            w.classList.remove('portrait');
+                            w.classList.add('landscape');
+                        }
+                    }
+                };
+                img.onerror = function() {
+                    if (this.src.endsWith('.jpg')) {
+                        this.src = this.src.replace('.jpg', '.png');
+                    } else {
+                        w.style.display = 'none';
+                    }
+                };
+                w.onclick = () => openSingleLightbox(imagesArray, idx);
+                w.appendChild(img);
+                container.appendChild(w);
+            });
+            document.getElementById('lightbox-modal').style.display = 'flex';
+        }
+
+        let currentSingleImages = [];
+        let currentSingleIndex = 0;
+
+        function openSingleLightbox(imagesArray, index) {
+            currentSingleImages = imagesArray;
+            currentSingleIndex = index;
+            const singleImg = document.getElementById('single-lightbox-img');
+            singleImg.style.display = 'block';
+            singleImg.src = currentSingleImages[currentSingleIndex];
+            document.getElementById('lightbox-single-overlay').style.display = 'flex';
+            if (currentSingleImages.length > 1) {
+                new Image().src = currentSingleImages[(currentSingleIndex + 1) % currentSingleImages.length];
+                new Image().src = currentSingleImages[(currentSingleIndex - 1 + currentSingleImages.length) % currentSingleImages.length];
+            }
+        }
+
+        function closeSingleLightbox() {
+            document.getElementById('lightbox-single-overlay').style.display = 'none';
+        }
+
+        function showSingleImage(n) {
+            if (!currentSingleImages.length) return;
+            currentSingleIndex = (n + currentSingleImages.length) % currentSingleImages.length;
+            const singleImg = document.getElementById('single-lightbox-img');
+            singleImg.style.display = 'block';
+            singleImg.src = currentSingleImages[currentSingleIndex];
+            // Preload next and previous images for instant transitions
+            const nextIdx = (currentSingleIndex + 1) % currentSingleImages.length;
+            const prevIdx = (currentSingleIndex - 1 + currentSingleImages.length) % currentSingleImages.length;
+            new Image().src = currentSingleImages[nextIdx];
+            new Image().src = currentSingleImages[prevIdx];
+        }
+
+        function nextSingleImage() {
+            showSingleImage(currentSingleIndex + 1);
+        }
+
+        function prevSingleImage() {
+            showSingleImage(currentSingleIndex - 1);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('lightbox-single-overlay').style.display === 'flex') {
+                if (e.key === 'ArrowRight') prevSingleImage();
+                if (e.key === 'ArrowLeft') nextSingleImage();
+                if (e.key === 'Escape') closeSingleLightbox();
+            } else if (document.getElementById('lightbox-modal').style.display === 'flex') {
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        function closeLightbox() {
+            document.getElementById('lightbox-modal').style.display = 'none';
+        }
+
+        function filterProjects(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.project-card').forEach(card => {
+                card.style.display = (category === 'all' || card.dataset.category === category) ? 'flex' : 'none';
+            });
+        }
+
+        // תמיכה בהחלקה ימינה ושמאלה (Swipe) בגלריית פרויקט במובייל
+        (function() {
+            const singleOverlay = document.getElementById('lightbox-single-overlay');
+            if (!singleOverlay) return;
+            let touchStartX = 0;
+            let touchStartY = 0;
+
+            singleOverlay.addEventListener('touchstart', function(e) {
+                if (e.changedTouches && e.changedTouches.length > 0) {
+                    touchStartX = e.changedTouches[0].screenX;
+                    touchStartY = e.changedTouches[0].screenY;
+                }
+            }, { passive: true });
+
+            singleOverlay.addEventListener('touchend', function(e) {
+                if (!e.changedTouches || e.changedTouches.length === 0) return;
+                const deltaX = e.changedTouches[0].screenX - touchStartX;
+                const deltaY = e.changedTouches[0].screenY - touchStartY;
+                if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY)) {
+                    if (deltaX < 0) {
+                        nextSingleImage();
+                    } else {
+                        prevSingleImage();
+                    }
+                }
+            }, { passive: true });
+        })();
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('contact-form');
+            const formData = new FormData(form);
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                form.style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+            })
+            .catch(() => {
+                form.style.display = 'none';
+                document.getElementById('success-message').style.display = 'block';
+            });
+        }
+    </script>
+</body>
+</html>
