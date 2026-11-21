@@ -1038,6 +1038,56 @@
                 grid-row: span 1 !important;
                 aspect-ratio: 4 / 5;
             }
+            .contact-section {
+                padding: 20px 0 12px 0;
+            }
+            .contact-section > .section-inner > div[style*="margin-bottom: 40px"] {
+                margin-bottom: 8px !important;
+            }
+            .contact-container {
+                padding: 16px 18px;
+            }
+            .contact-container .section-header {
+                margin-bottom: 10px !important;
+            }
+            .contact-container .section-header h2 {
+                font-size: 1.65rem;
+                margin-bottom: 0;
+            }
+            .contact-container .form-group {
+                margin-bottom: 9px;
+            }
+            .contact-container .form-group label {
+                margin-bottom: 3px;
+                font-size: 0.9rem;
+            }
+            .contact-container .form-group input,
+            .contact-container .form-group textarea {
+                padding: 7px 11px;
+                font-size: 0.9rem;
+            }
+            .contact-container .form-group textarea {
+                rows: 2;
+                min-height: 54px;
+                height: 54px;
+            }
+            .contact-container .form-submit-row {
+                margin-top: 10px;
+                gap: 8px;
+            }
+            .contact-container .btn-submit {
+                padding: 9px 24px;
+                font-size: 0.95rem;
+            }
+            .contact-container .contact-extra-info {
+                line-height: 1.35;
+                font-size: 0.88rem;
+            }
+            .contact-container .contact-extra-info .contact-title-small {
+                font-size: 0.92rem;
+                margin-top: 4px;
+                margin-bottom: 1px;
+            }
         }
 
         #lightbox-single-overlay {
@@ -1948,6 +1998,36 @@
                 card.style.display = (category === 'all' || card.dataset.category === category) ? 'flex' : 'none';
             });
         }
+
+        // תמיכה בהחלקה ימינה ושמאלה (Swipe) בקרוסלה הראשית במובייל
+        (function() {
+            const carouselContainer = document.getElementById('dynamic-carousel-container');
+            if (!carouselContainer) return;
+            let touchStartX = 0;
+            let touchStartY = 0;
+
+            carouselContainer.addEventListener('touchstart', function(e) {
+                if (window.innerWidth > 900) return;
+                if (e.changedTouches && e.changedTouches.length > 0) {
+                    touchStartX = e.changedTouches[0].screenX;
+                    touchStartY = e.changedTouches[0].screenY;
+                }
+            }, { passive: true });
+
+            carouselContainer.addEventListener('touchend', function(e) {
+                if (window.innerWidth > 900) return;
+                if (!e.changedTouches || e.changedTouches.length === 0) return;
+                const deltaX = e.changedTouches[0].screenX - touchStartX;
+                const deltaY = e.changedTouches[0].screenY - touchStartY;
+                if (Math.abs(deltaX) > 35 && Math.abs(deltaX) > Math.abs(deltaY)) {
+                    if (deltaX < 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                }
+            }, { passive: true });
+        })();
 
         // תמיכה בהחלקה ימינה ושמאלה (Swipe) בגלריית פרויקט במובייל
         (function() {
