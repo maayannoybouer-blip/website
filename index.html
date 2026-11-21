@@ -932,8 +932,22 @@
             .about-content p {
                 margin-bottom: 5px;
             }
+            header {
+                position: relative;
+                background: var(--white);
+                backdrop-filter: none;
+                padding: 10px 0 0 0;
+            }
+            .header-inner {
+                justify-content: flex-start;
+                padding: 0 14px;
+            }
             .mobile-menu-toggle {
                 display: block;
+                color: var(--black);
+                font-size: 1.6rem;
+                line-height: 1;
+                padding: 2px 4px;
             }
             nav ul {
                 display: none;
@@ -942,20 +956,35 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: var(--black);
-                padding: 20px 0;
-                gap: 15px;
+                background: var(--white);
+                padding: 16px 0;
+                gap: 14px;
                 text-align: center;
+                border-bottom: 1px solid #E5E7EB;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+                z-index: 1001;
+            }
+            nav ul li a {
+                color: var(--black);
+            }
+            nav ul li a:hover,
+            nav ul li a.active {
+                color: var(--black);
             }
             nav ul.open {
                 display: flex;
             }
+            .hero-section {
+                padding-top: 4px;
+                padding-bottom: 16px;
+            }
             .hero-top-row {
                 flex-direction: column-reverse;
                 align-items: flex-end;
-                gap: 10px;
+                gap: 6px;
+                margin: 4px auto 12px auto;
                 text-align: left;
-                padding: 0 12px;
+                padding: 0 14px;
             }
             .hero-logo-container {
                 justify-content: flex-end;
@@ -963,18 +992,30 @@
             }
             .hero-logo-img {
                 margin: 0;
-                height: 42px;
+                height: 36px;
             }
             .hero-tagline {
                 text-align: left;
                 width: 100%;
-                font-size: 1.15rem;
+                font-size: 1rem;
                 top: 0;
+            }
+            .carousel-container {
+                height: calc(100svh - 195px);
+                min-height: 280px;
+                max-height: 460px;
+            }
+            .carousel-dots {
+                margin-top: 10px;
+            }
+            .dot {
+                width: 9px;
+                height: 9px;
             }
             .hero-cta-container {
                 text-align: right;
-                margin-top: 28px;
-                padding: 0 12px;
+                margin-top: 12px;
+                padding: 0 14px;
             }
             .hero-cta-container .btn-solid {
                 padding: 8px 22px;
