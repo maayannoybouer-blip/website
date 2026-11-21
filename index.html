@@ -1582,7 +1582,7 @@
     </footer>
 
     <div id="lightbox-modal">
-        <div class="lightbox-header-container">
+        <div class="lightbox-header-container" style="position: sticky; top: 0; z-index: 10; background: #FFFFFF; margin-bottom: 12px;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
                 <div style="display: flex; flex-direction: column; gap: 6px;">
                     <h3 id="lightbox-title" style="font-size:2.4rem; color:var(--black);">גלריית פרויקט</h3>
@@ -1590,6 +1590,8 @@
                 </div>
                 <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
             </div>
+        </div>
+        <div style="width: 100%; max-width: 1390px; margin: 0 auto 24px auto; padding: 0 20px; text-align: right;">
             <p id="lightbox-desc"></p>
         </div>
         <div id="lightbox-images-container"></div>
