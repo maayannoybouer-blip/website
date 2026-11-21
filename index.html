@@ -937,11 +937,11 @@
                 top: 0;
                 left: 0;
                 width: 100%;
-                background: transparent;
+                background: var(--white);
                 backdrop-filter: none;
-                padding: 10px 0 0 0;
+                padding: 8px 0;
                 z-index: 1000;
-                pointer-events: none;
+                border-bottom: 1px solid #F3F4F6;
             }
             .header-inner {
                 justify-content: flex-start;
@@ -952,10 +952,9 @@
                 color: var(--black);
                 font-size: 1.6rem;
                 line-height: 1;
-                padding: 4px 8px;
-                background: rgba(255, 255, 255, 0.85);
-                backdrop-filter: blur(4px);
-                pointer-events: auto;
+                padding: 2px 6px;
+                background: transparent;
+                backdrop-filter: none;
             }
             nav ul {
                 display: none;
@@ -971,7 +970,6 @@
                 border-bottom: 1px solid #E5E7EB;
                 box-shadow: 0 10px 25px rgba(0,0,0,0.06);
                 z-index: 1001;
-                pointer-events: auto;
             }
             nav ul li a {
                 color: var(--black);
@@ -984,7 +982,7 @@
                 display: flex;
             }
             .hero-section {
-                padding-top: 42px;
+                padding-top: 46px;
                 padding-bottom: 16px;
             }
             .hero-top-row {
