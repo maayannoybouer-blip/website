@@ -638,16 +638,16 @@
 
         .contact-section {
             background-color: var(--white);
-            padding: 20px 0;
+            padding: 55px 0 30px 0;
         }
 
         .contact-container {
-            max-width: 520px;
+            max-width: 560px;
             margin-right: 0;
             margin-left: auto;
             background: var(--white);
             color: var(--black);
-            padding: 30px 35px;
+            padding: 38px 42px;
             border: 1px solid #6B7280;
             text-align: right;
             position: relative;
@@ -658,7 +658,7 @@
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -666,21 +666,21 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-weight: 300;
             color: var(--black);
             text-align: right;
             width: 100%;
-            font-size: 1rem;
+            font-size: 1.03rem;
         }
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 10px 16px;
+            padding: 12px 16px;
             border: 1px solid #CCCCCC;
             font-family: 'Heebo', sans-serif;
             font-weight: 300;
-            font-size: 0.98rem;
+            font-size: 1rem;
             background-color: var(--white);
             color: var(--black);
             text-align: right;
@@ -1521,7 +1521,7 @@
         function scrollToSection(targetId) {
             const targetEl = document.getElementById(targetId);
             if (targetEl) {
-                window.scrollTo({ top: targetEl.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
+                window.scrollTo({ top: targetEl.getBoundingClientRect().top + window.pageYOffset - 55, behavior: 'smooth' });
             }
         }
 
@@ -1564,11 +1564,28 @@
 
         let homeCarouselInterval = null;
         let lastCarouselIsMobile = null;
+        let slideIndex = 0;
+        let isCarouselAnimating = false;
+
+        function startCarouselAutoplay() {
+            if (homeCarouselInterval) {
+                clearInterval(homeCarouselInterval);
+                homeCarouselInterval = null;
+            }
+            homeCarouselInterval = setInterval(() => {
+                showSlide(slideIndex + 1, false);
+            }, 4500);
+        }
 
         function initHomeCarousel() {
             const container = document.getElementById('dynamic-carousel-container');
             const dotsContainer = document.getElementById('dynamic-carousel-dots');
             if (!container || !dotsContainer) return;
+
+            if (homeCarouselInterval) {
+                clearInterval(homeCarouselInterval);
+                homeCarouselInterval = null;
+            }
 
             const isMobile = window.innerWidth <= 900;
             lastCarouselIsMobile = isMobile;
@@ -1607,7 +1624,9 @@
                     if (this.src.endsWith('.jpg')) {
                         this.src = this.src.replace('.jpg', '.png');
                     } else {
-                        this.style.display = 'none';
+                        s.remove();
+                        const dots = dotsContainer.querySelectorAll('.dot');
+                        if (dots[dots.length - 1]) dots[dots.length - 1].remove();
                     }
                 };
                 if (idx === 0) {
@@ -1628,8 +1647,8 @@
             });
 
             slideIndex = 0;
-            if (homeCarouselInterval) clearInterval(homeCarouselInterval);
-            homeCarouselInterval = setInterval(nextSlide, 4500);
+            isCarouselAnimating = false;
+            startCarouselAutoplay();
         }
 
         window.addEventListener('resize', function() {
@@ -1639,19 +1658,38 @@
             }
         });
 
-        let slideIndex = 0;
-        function showSlide(n) {
-            const slides = document.querySelectorAll('.carousel-slide'), dots = document.querySelectorAll('.dot');
+        function showSlide(n, isManual = true) {
+            const container = document.getElementById('dynamic-carousel-container');
+            const dotsContainer = document.getElementById('dynamic-carousel-dots');
+            if (!container || !dotsContainer) return;
+
+            const slides = container.querySelectorAll('.carousel-slide');
+            const dots = dotsContainer.querySelectorAll('.dot');
             if (!slides.length) return;
+
+            const targetIndex = (n + slides.length) % slides.length;
+            if (targetIndex === slideIndex) return;
+            if (isManual && isCarouselAnimating) return;
+
+            isCarouselAnimating = true;
             slides.forEach(s => s.classList.remove('active'));
             dots.forEach(d => d.classList.remove('active'));
-            slideIndex = (n + slides.length) % slides.length;
+
+            slideIndex = targetIndex;
             slides[slideIndex].classList.add('active');
-            dots[slideIndex].classList.add('active');
+            if (dots[slideIndex]) dots[slideIndex].classList.add('active');
+
+            if (isManual) {
+                startCarouselAutoplay();
+            }
+
+            setTimeout(() => {
+                isCarouselAnimating = false;
+            }, 600);
         }
-        function currentSlide(n) { showSlide(n); }
-        function nextSlide() { showSlide(slideIndex + 1); }
-        function prevSlide() { showSlide(slideIndex - 1); }
+        function currentSlide(n) { showSlide(n, true); }
+        function nextSlide() { showSlide(slideIndex + 1, true); }
+        function prevSlide() { showSlide(slideIndex - 1, true); }
 
         const projectImageCounts = {
             'shoresh': 13,
@@ -1671,20 +1709,14 @@
             'shoresh': 'בית פרטי בשער העמקים',
             'gonda': 'בית פרטי בשער העמקים',
             'ziv': 'בית עירוני דו־מפלסי בבניין משותף בתל אביב',
-            'gefen': 'יחידת מגורים בבית משותף בעין כרם
-צילום | נויה שילוני חביב',
-            'melodic': 'יחידת מגורים בבית משותף בעין כרם
-צילום | נויה שילוני חביב',
-            'beeri': 'יחידת מגורים בבית משותף בעין כרם
-צילום | נויה שילוני חביב',
-            'ela': 'יחידת מגורים בבית משותף בעין כרם
-צילום | נויה שילוני חביב',
-            'kerem': 'יחידת מגורים בבית משותף בעין כרם
-צילום | נויה שילוני חביב',
+            'gefen': 'יחידת מגורים בבית משותף בעין כרם\nצילום | נויה שילוני חביב',
+            'melodic': 'יחידת מגורים בבית משותף בעין כרם\nצילום | נויה שילוני חביב',
+            'beeri': 'יחידת מגורים בבית משותף בעין כרם\nצילום | נויה שילוני חביב',
+            'ela': 'יחידת מגורים בבית משותף בעין כרם\nצילום | נויה שילוני חביב',
+            'kerem': 'יחידת מגורים בבית משותף בעין כרם\nצילום | נויה שילוני חביב',
             'lotem': "גראז' שהוסב ליחידת מגורים בעין כרם",
             'ramon': 'דירה אורבנית בתל אביב',
-            'harel': 'דירה אורבנית בתל אביב
-צילום | נעה נאון',
+            'harel': 'דירה אורבנית בתל אביב\nצילום | נעה נאון',
             'sharir_friedman': 'דירה בפרויקט תמ"א בתל אביב'
         };
 
@@ -1698,11 +1730,8 @@
             'ela': 'עיצוב נקי ומוקפד עם דגש על חומריות טבעית, לצד אור טבעי נדיב המלווה את החלל ויוצר תחושת השראה מתמשכת.',
             'kerem': 'עיצוב מאוזן בין הנתונים הקיימים של המבנה לבין האלמנטים החדשים עם חיבור למקום',
             'lotem': "תכנון יצירתי שהפך מגראז' פשוט למרחב מזמין שמשחק בין הפנים לחוץ, ושנעים לשהות בו.",
-            'ramon': 'תכנון מחדש של פנים הדירה ליצירת זרימה הרמונית בין החללים הציבוריים,
- לצד סטיילינג אישי שנבחר בקפידה על ידי הלקוחה, המשלים את התכנון ומעניק לבית את אופיו הייחודי.',
-            'harel': 'פרויקט שנולד מתוך שותפות יצירתית עם לקוחה מלאת רעיונות, שבו ההשראה הגיעה מכל עבר -
-מתפריט מסעדה צבעוני, דרך יצירות אמנות ועד מרקמים וצבעים שנאספו מטיולים ברחבי העולם.
-אהבה משותפת לעיצוב, לצבע ולפרטים הקטנים חיברה את כל אלה לכדי סיפור הרמוני אחד.',
+            'ramon': 'תכנון מחדש של פנים הדירה ליצירת זרימה הרמונית בין החללים הציבוריים,\n לצד סטיילינג אישי שנבחר בקפידה על ידי הלקוחה, המשלים את התכנון ומעניק לבית את אופיו הייחודי.',
+            'harel': 'פרויקט שנולד מתוך שותפות יצירתית עם לקוחה מלאת רעיונות, שבו ההשראה הגיעה מכל עבר -\nמתפריט מסעדה צבעוני, דרך יצירות אמנות ועד מרקמים וצבעים שנאספו מטיולים ברחבי העולם.\nאהבה משותפת לעיצוב, לצבע ולפרטים הקטנים חיברה את כל אלה לכדי סיפור הרמוני אחד.',
             'sharir_friedman': 'תכנון מחדש של דירה ישנה, שתרגם את החזון של הלקוחות למרחב הרמוני המאזן בין יחד לבין ביטוי אישי. מקום המאפשר לכל אחת מבנות הבית את הפינה שלה, לצד חוויה משותפת של חיים יחד. תהליך שנרקם מתוך שותפות רגישה ואמון הדדי, ונושא את טביעת היד הכנה, הססגונית והייחודית של בנות הבית.',
         };
 
