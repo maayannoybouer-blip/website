@@ -1569,7 +1569,18 @@
         function scrollToSection(targetId) {
             const targetEl = document.getElementById(targetId);
             if (targetEl) {
-                window.scrollTo({ top: targetEl.getBoundingClientRect().top + window.pageYOffset - 55, behavior: 'smooth' });
+                if (targetId === 'home') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+                const headerEl = document.querySelector('header');
+                const headerHeight = headerEl ? headerEl.offsetHeight : 0;
+                const headingEl = targetEl.querySelector('h2') || targetEl;
+                const offset = headerHeight + 8;
+                window.scrollTo({
+                    top: headingEl.getBoundingClientRect().top + window.pageYOffset - offset,
+                    behavior: 'smooth'
+                });
             }
         }
 
